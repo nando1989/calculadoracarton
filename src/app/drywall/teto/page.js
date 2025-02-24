@@ -4,45 +4,41 @@ import { useState } from 'react';
 import './styles.css';
 import Navbar from '@/components/navbar/Navbar';
 
-export default function CalculadoraForro() {
+export default function CalculadoraDrywall() {
     const [largura, setLargura] = useState('');
     const [comprimento, setComprimento] = useState('');
     const [orientacao, setOrientacao] = useState('comprimento');
+    const [tamanhoPlaca, setTamanhoPlaca] = useState('1.20x1.80');
     const [resultado, setResultado] = useState(null);
 
-    function calcularForro(larguraTeto, comprimentoTeto, orientacao) {
-        const larguraPlaca = 1.25;
-        const comprimentoPlaca = 0.62;
-        const comprimentoLongarina = 3.25;
-        const comprimentoCantoneira = 3.00;
-        const comprimentoTravessa = 0.62;
+    function calcularMateriais(larguraTeto, comprimentoTeto, orientacao, tamanhoPlaca) {
+        const placas = {
+            '1.20x1.80': { largura: 1.20, comprimento: 1.80 },
+            '1.20x2.40': { largura: 1.20, comprimento: 2.40 }
+        };
 
-        let placaLadoMaior, placaLadoMenor;
-        if (orientacao === "comprimento") {
-            placaLadoMaior = comprimentoPlaca;
-            placaLadoMenor = larguraPlaca;
-        } else {
-            placaLadoMaior = larguraPlaca;
-            placaLadoMenor = comprimentoPlaca;
-        }
+        const placaLadoMaior = orientacao === 'comprimento' ? placas[tamanhoPlaca].comprimento : placas[tamanhoPlaca].largura;
+        const placaLadoMenor = orientacao === 'comprimento' ? placas[tamanhoPlaca].largura : placas[tamanhoPlaca].comprimento;
 
         const placasLargura = Math.ceil(larguraTeto / placaLadoMenor);
         const placasComprimento = Math.ceil(comprimentoTeto / placaLadoMaior);
         const totalPlacas = placasLargura * placasComprimento;
 
-        const totalCantoneira = Math.ceil(((larguraTeto + comprimentoTeto) * 2) / comprimentoCantoneira);
-
-        const fileirasLongarina = placasComprimento - 1;
-        const totalLongarinas = Math.ceil((fileirasLongarina * larguraTeto) / comprimentoLongarina);
-
-        const fileirasTravessas = placasLargura - 0.5;
-        const totalTravessas = Math.ceil((fileirasTravessas * comprimentoTeto) / comprimentoTravessa);
+        const totalCantoneira = Math.ceil(((larguraTeto + comprimentoTeto) * 2) / 3.00);
+        const totalF530 = Math.ceil((larguraTeto / 0.60) * comprimentoTeto / 3.00);
+        const totalReguladores = totalF530 * 3;
+        const totalParafusos = totalPlacas * 50;
+        const totalMassa = totalPlacas * 1.5;
+        const totalFitaTelada = totalPlacas * 5;
 
         return {
             totalPlacas,
             totalCantoneira,
-            totalLongarinas,
-            totalTravessas
+            totalF530,
+            totalReguladores,
+            totalParafusos,
+            totalMassa,
+            totalFitaTelada
         };
     }
 
@@ -55,61 +51,48 @@ export default function CalculadoraForro() {
             return;
         }
 
-        const resultado = calcularForro(larguraNum, comprimentoNum, orientacao);
+        const resultado = calcularMateriais(larguraNum, comprimentoNum, orientacao, tamanhoPlaca);
         setResultado(resultado);
     };
 
     return (
-      <>
-      <Navbar/>
-        <div className="container-area-calculator">
+        <>
+            <Navbar />
+            <div className="container-area-calculator">
+                <img src="/drywall.png" alt="Teto Drywall" className="drywallImg" />
+                <h2 className="title-calculator">Calculadora teto de Drywall</h2>
+                <label>Largura do Teto (m):</label>
+                <input type="number" value={largura} onChange={(e) => setLargura(e.target.value)} step="0.01" />
 
-            <img
-                src="/img-teto.png"
-                alt="Caminhão de frete"
-                className="removivelImg"
-            />
-            <h2 className="title-calculator">Calculadora teto de Drywall</h2>
-            <label>Largura do Teto (m):</label>
-            <input
-                type="number"
-                value={largura}
-                onChange={(e) => setLargura(e.target.value)}
-                className="w-full p-2 border rounded"
-                step="0.01"
-            />
+                <label>Comprimento do Teto (m):</label>
+                <input type="number" value={comprimento} onChange={(e) => setComprimento(e.target.value)} step="0.01" />
 
-            <label className="block text-left mt-2">Comprimento do Teto (m):</label>
-            <input
-                type="number"
-                value={comprimento}
-                onChange={(e) => setComprimento(e.target.value)}
-                step="0.01"
-            />
+                <label>Orientação das Placas:</label>
+                <select value={orientacao} onChange={(e) => setOrientacao(e.target.value)}>
+                    <option value="comprimento">Maior lado no Comprimento</option>
+                    <option value="largura">Maior lado na Largura</option>
+                </select>
 
-            <label className="block text-left mt-2">Orientação das Placas:</label>
-            <select
-                value={orientacao}
-                onChange={(e) => setOrientacao(e.target.value)}
-                className="w-full p-2 border rounded"
-            >
-                <option value="comprimento">Maior lado no Comprimento</option>
-                <option value="largura">Maior lado na Largura</option>
-            </select>
+                <label>Tamanho das Placas:</label>
+                <select value={tamanhoPlaca} onChange={(e) => setTamanhoPlaca(e.target.value)}>
+                    <option value="1.20x1.80">1.20m x 1.80m</option>
+                    <option value="1.20x2.40">1.20m x 2.40m</option>
+                </select>
 
-            <button
-                onClick={handleCalcular}
-                className="w-full mt-4 bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
-            >Calcular</button>
+                <button onClick={handleCalcular} className="btn-calcular">Calcular</button>
 
-            {resultado && (
-                <div className="mt-4 text-left">
-                    <p>Quantidade de Placas: <strong>{resultado.totalPlacas}</strong></p>
-                    <p>Quantidade de Cantoneiras: <strong>{resultado.totalCantoneira}</strong></p>
-                    <p>Quantidade de Longarinas: <strong>{resultado.totalLongarinas}</strong></p>
-                    <p>Quantidade de Travessas: <strong>{resultado.totalTravessas}</strong></p>
-                </div>
-            )}
-        </div></>
+                {resultado && (
+                    <div className="resultado">
+                        <p>Quantidade de Placas: <strong>{resultado.totalPlacas}</strong></p>
+                        <p>Quantidade de Cantoneiras: <strong>{resultado.totalCantoneira}</strong></p>
+                        <p>Quantidade de Perfis F530: <strong>{resultado.totalF530}</strong></p>
+                        <p>Quantidade de Reguladores: <strong>{resultado.totalReguladores}</strong></p>
+                        <p>Quantidade de Parafusos: <strong>{resultado.totalParafusos}</strong></p>
+                        <p>Quantidade de Massa (kg): <strong>{resultado.totalMassa}</strong></p>
+                        <p>Quantidade de Fita Telada (m): <strong>{resultado.totalFitaTelada}</strong></p>
+                    </div>
+                )}
+            </div>
+        </>
     );
 }
