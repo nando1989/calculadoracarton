@@ -1,0 +1,53 @@
+.container-area-calculator {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#resultado {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  text-align: left;
+}
+
+p {
+  margin: 5px 0;
+  font-size: 18px;
+}

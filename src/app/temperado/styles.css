@@ -1,0 +1,32 @@
+.grid-temper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: auto;
+}
+
+.imgGlass{
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  margin-top: 5px;
+}
+
+.grid-temper-1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 210px;
+  height: 280px;
+  margin: 10px;
+}
+
+@media (max-width: 600px){
+ 
+
+
+
+  
+}
