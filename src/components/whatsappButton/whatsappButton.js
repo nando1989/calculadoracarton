@@ -4,7 +4,7 @@ import './styles.css';
 export default function WhatsApp() {
   return (
       <a
-        href="https://wa.me/5521977142180?text=_*Ola%20vim%20pelo%20site!*_"  
+        href="https://wa.me/5521994598743?text=Ol%C3%A1%20Carton!"  
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-button"

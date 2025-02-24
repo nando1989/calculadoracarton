@@ -104,6 +104,15 @@ button:hover {
   /* Cor da bolinha ativa */
 }
 
+.griComponent {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  
+}
+
 
 @media (max-width: 600px) {
 
@@ -117,7 +126,7 @@ button:hover {
     align-items: center;
     justify-content: center;
     grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
+    gap: 18px;
     
   }
 

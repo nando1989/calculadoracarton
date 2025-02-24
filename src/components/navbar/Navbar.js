@@ -14,12 +14,10 @@ export default function Navbar() {
         </li>
 
         <li>
-          <Link href="/contato">Contato</Link>
+          <Link href="/tutoriais">Tutoriais</Link>
         </li>
 
-        <li>
-          <Link href="/login">Admin</Link>
-        </li>
+        
         
         
 

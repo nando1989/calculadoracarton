@@ -53,5 +53,16 @@
     object-fit: cover;
   }
 
+  .containerVideo{
+    margin-bottom: 20px;
+    border-bottom: solid 1px red;
+  }
+
+  .containerVideo h2, p {
+    margin: 0;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+
   
 }
