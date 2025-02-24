@@ -24,22 +24,6 @@ const Footer = () => {
 
 
         <div className="footer-section">
-          <h3 className="footer-title">Links Úteis</h3>
-          <ul className="footer-links">
-            <li>
-              <a href="/sobre" className="footer-link">Sobre Nós</a>
-            </li>
-            <li>
-              <a href="/" className="footer-link">Nossos Serviços</a>
-            </li>
-            <li>
-              <a href="/contato" className="footer-link">Fale Conosco</a>
-            </li>
-          </ul>
-        </div>
-
-
-        <div className="footer-section">
           <h3 className="footer-title">Contato</h3>
           <p className="footer-text">
             Email: <a href="mailto:contato@serrafrete.com" className="footer-link">cartondrywall@gmail.com</a>
