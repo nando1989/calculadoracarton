@@ -72,11 +72,6 @@ export default function CalculadoraDrywall() {
                         <label className='label-parede'>Altura da Parede (m):</label>
                         <input type="number" value={altura} onChange={(e) => setAltura(e.target.value)} step="0.01" />
 
-                        <label className='label-parede'>Orientação das Placas:</label>
-                        <select value={orientacao} onChange={(e) => setOrientacao(e.target.value)}>
-                            <option value="altura">Maior lado na Altura</option>
-                            <option value="largura">Maior lado na Largura</option>
-                        </select>
 
                         <label className='label-parede'>Tamanho das Placas:</label>
                         <select value={tamanhoPlaca} onChange={(e) => setTamanhoPlaca(e.target.value)}>
