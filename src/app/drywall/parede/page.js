@@ -4,112 +4,100 @@ import { useState } from 'react';
 import './styles.css';
 import Navbar from '@/components/navbar/Navbar';
 
-export default function CalculadoraForro() {
+export default function CalculadoraDrywall() {
     const [largura, setLargura] = useState('');
-    const [comprimento, setComprimento] = useState('');
-    const [orientacao, setOrientacao] = useState('comprimento');
+    const [altura, setAltura] = useState('');
+    const [orientacao, setOrientacao] = useState('altura');
+    const [tamanhoPlaca, setTamanhoPlaca] = useState('1.20x1.80');
     const [resultado, setResultado] = useState(null);
 
-    function calcularForro(larguraTeto, comprimentoTeto, orientacao) {
-        const larguraPlaca = 1.25;
-        const comprimentoPlaca = 0.62;
-        const comprimentoLongarina = 3.25;
-        const comprimentoCantoneira = 3.00;
-        const comprimentoTravessa = 0.62;
+    function calcularMateriais(larguraParede, alturaParede, orientacao, tamanhoPlaca) {
+        const placas = {
+            '1.20x1.80': { largura: 1.20, altura: 1.80 },
+            '1.20x2.40': { largura: 1.20, altura: 2.40 }
+        };
 
-        let placaLadoMaior, placaLadoMenor;
-        if (orientacao === "comprimento") {
-            placaLadoMaior = comprimentoPlaca;
-            placaLadoMenor = larguraPlaca;
-        } else {
-            placaLadoMaior = larguraPlaca;
-            placaLadoMenor = comprimentoPlaca;
-        }
+        const placaLadoMaior = orientacao === 'altura' ? placas[tamanhoPlaca].altura : placas[tamanhoPlaca].largura;
+        const placaLadoMenor = orientacao === 'altura' ? placas[tamanhoPlaca].largura : placas[tamanhoPlaca].altura;
 
-        const placasLargura = Math.ceil(larguraTeto / placaLadoMenor);
-        const placasComprimento = Math.ceil(comprimentoTeto / placaLadoMaior);
-        const totalPlacas = placasLargura * placasComprimento;
+        const placasLargura = Math.ceil(larguraParede / placaLadoMenor);
+        const placasAltura = Math.ceil(alturaParede / placaLadoMaior);
+        const totalPlacas = placasLargura * placasAltura;
 
-        const totalCantoneira = Math.ceil(((larguraTeto + comprimentoTeto) * 2) / comprimentoCantoneira);
-
-        const fileirasLongarina = placasComprimento - 1;
-        const totalLongarinas = Math.ceil((fileirasLongarina * larguraTeto) / comprimentoLongarina);
-
-        const fileirasTravessas = placasLargura - 0.5;
-        const totalTravessas = Math.ceil((fileirasTravessas * comprimentoTeto) / comprimentoTravessa);
+        const totalGuias = Math.ceil(((2 * larguraParede) + (2 * alturaParede)) / 3.00);
+        const totalMontantes = Math.ceil((larguraParede / 0.60) + 1);
+        const totalReguladores = totalMontantes * 3;
+        const totalParafusos = totalPlacas * 50;
+        const totalMassa = totalPlacas * 1.5;
+        const totalFitaTelada = totalPlacas * 5;
 
         return {
             totalPlacas,
-            totalCantoneira,
-            totalLongarinas,
-            totalTravessas
+            totalGuias,
+            totalMontantes,
+            totalReguladores,
+            totalParafusos,
+            totalMassa,
+            totalFitaTelada
         };
     }
 
     const handleCalcular = () => {
         const larguraNum = parseFloat(largura);
-        const comprimentoNum = parseFloat(comprimento);
+        const alturaNum = parseFloat(altura);
 
-        if (!larguraNum || !comprimentoNum) {
+        if (!larguraNum || !alturaNum) {
             alert("Por favor, insira medidas válidas.");
             return;
         }
 
-        const resultado = calcularForro(larguraNum, comprimentoNum, orientacao);
+        const resultado = calcularMateriais(larguraNum, alturaNum, orientacao, tamanhoPlaca);
         setResultado(resultado);
     };
 
     return (
-      <>
-      <Navbar/>
-        <div className="container-area-calculator">
+        <>
+            <Navbar />
+            <div className="container-area-calculator">
+                <div className='container-img-form'>
+                    <div className='container-img-parede'>
+                        <img src="/img-parede.png" alt="Parede Drywall" className="drywallImg" />
+                    </div>
 
-            <img
-                src="/img-parede.png"
-                alt="Caminhão de frete"
-                className="removivelImg"
-            />
-            <h2 className="title-calculator">Calculadora parede de Drywall</h2>
-            <label>Largura do Teto (m):</label>
-            <input
-                type="number"
-                value={largura}
-                onChange={(e) => setLargura(e.target.value)}
-                className="w-full p-2 border rounded"
-                step="0.01"
-            />
+                    <div className='container-form-parede'>
+                        <h2 className="title-calculator">Calculadora Parede de Drywall</h2>
+                        <label className='label-parede'>Largura da Parede (m):</label>
+                        <input type="number" value={largura} onChange={(e) => setLargura(e.target.value)} step="0.01" />
 
-            <label className="block text-left mt-2">Comprimento do Teto (m):</label>
-            <input
-                type="number"
-                value={comprimento}
-                onChange={(e) => setComprimento(e.target.value)}
-                step="0.01"
-            />
+                        <label className='label-parede'>Altura da Parede (m):</label>
+                        <input type="number" value={altura} onChange={(e) => setAltura(e.target.value)} step="0.01" />
 
-            <label className="block text-left mt-2">Orientação das Placas:</label>
-            <select
-                value={orientacao}
-                onChange={(e) => setOrientacao(e.target.value)}
-                className="w-full p-2 border rounded"
-            >
-                <option value="comprimento">Maior lado no Comprimento</option>
-                <option value="largura">Maior lado na Largura</option>
-            </select>
+                        <label className='label-parede'>Orientação das Placas:</label>
+                        <select value={orientacao} onChange={(e) => setOrientacao(e.target.value)}>
+                            <option value="altura">Maior lado na Altura</option>
+                            <option value="largura">Maior lado na Largura</option>
+                        </select>
 
-            <button
-                onClick={handleCalcular}
-                className="w-full mt-4 bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
-            >Calcular</button>
-
-            {resultado && (
-                <div className="mt-4 text-left">
-                    <p>Quantidade de Placas: <strong>{resultado.totalPlacas}</strong></p>
-                    <p>Quantidade de Cantoneiras: <strong>{resultado.totalCantoneira}</strong></p>
-                    <p>Quantidade de Longarinas: <strong>{resultado.totalLongarinas}</strong></p>
-                    <p>Quantidade de Travessas: <strong>{resultado.totalTravessas}</strong></p>
+                        <label className='label-parede'>Tamanho das Placas:</label>
+                        <select value={tamanhoPlaca} onChange={(e) => setTamanhoPlaca(e.target.value)}>
+                            <option value="1.20x1.80">1.20m x 1.80m</option>
+                            <option value="1.20x2.40">1.20m x 2.40m</option>
+                        </select>
+                        <button onClick={handleCalcular} className="btn-calcular">Calcular</button>
+                    </div>
                 </div>
-            )}
-        </div></>
+
+                {resultado && (
+                    <div className="resultado">
+                        <p>Placas: <strong>{resultado.totalPlacas}</strong></p>
+                        <p>Guias: <strong>{resultado.totalGuias}</strong></p>
+                        <p>Montantes: <strong>{resultado.totalMontantes}</strong></p>
+                        <p>Parafusos gn25: <strong>{resultado.totalParafusos}</strong></p>
+                        <p>Massa (kg): <strong>{resultado.totalMassa}</strong></p>
+                        <p>Fita Telada (m): <strong>{resultado.totalFitaTelada}</strong></p>
+                    </div>
+                )}
+            </div>
+        </>
     );
 }

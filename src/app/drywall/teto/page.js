@@ -59,27 +59,34 @@ export default function CalculadoraDrywall() {
         <>
             <Navbar />
             <div className="container-area-calculator">
-                <img src="/drywall.png" alt="Teto Drywall" className="drywallImg" />
-                <h2 className="title-calculator">Calculadora teto de Drywall</h2>
-                <label>Largura do Teto (m):</label>
-                <input type="number" value={largura} onChange={(e) => setLargura(e.target.value)} step="0.01" />
+                <div className='container-img-form'>
+                    <div className='container-img-parede'>
+                        <img src="/img-teto.png" alt="Teto Drywall" className="drywallImg" />
+                    </div>
 
-                <label>Comprimento do Teto (m):</label>
-                <input type="number" value={comprimento} onChange={(e) => setComprimento(e.target.value)} step="0.01" />
+                    <div className='container-form-parede'>
+                        <h2 className="title-calculator">Calculadora parede de Drywall</h2>
+                        <label className='label-parede'>Largura do Teto (m):</label>
+                        <input type="number" value={largura} onChange={(e) => setLargura(e.target.value)} step="0.01" />
 
-                <label>Orientação das Placas:</label>
-                <select value={orientacao} onChange={(e) => setOrientacao(e.target.value)}>
-                    <option value="comprimento">Maior lado no Comprimento</option>
-                    <option value="largura">Maior lado na Largura</option>
-                </select>
+                        <label className='label-parede'>Comprimento do Teto (m):</label>
+                        <input type="number" value={comprimento} onChange={(e) => setComprimento(e.target.value)} step="0.01" />
 
-                <label>Tamanho das Placas:</label>
-                <select value={tamanhoPlaca} onChange={(e) => setTamanhoPlaca(e.target.value)}>
-                    <option value="1.20x1.80">1.20m x 1.80m</option>
-                    <option value="1.20x2.40">1.20m x 2.40m</option>
-                </select>
+                        <label className='label-parede'>Orientação das Placas:</label>
+                        <select value={orientacao} onChange={(e) => setOrientacao(e.target.value)}>
+                            <option value="comprimento">Maior lado no Comprimento</option>
+                            <option value="largura">Maior lado na Largura</option>
+                        </select>
 
-                <button onClick={handleCalcular} className="btn-calcular">Calcular</button>
+                        <label className='label-parede'>Tamanho das Placas:</label>
+                        <select value={tamanhoPlaca} onChange={(e) => setTamanhoPlaca(e.target.value)}>
+                            <option value="1.20x1.80">1.20m x 1.80m</option>
+                            <option value="1.20x2.40">1.20m x 2.40m</option>
+                        </select><button onClick={handleCalcular} className="btn-calcular">Calcular</button>
+                    </div>
+                </div>
+
+
 
                 {resultado && (
                     <div className="resultado">
