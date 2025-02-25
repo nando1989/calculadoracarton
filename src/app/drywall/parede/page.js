@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import './styles.css';
 import Navbar from '@/components/navbar/Navbar';
+import WhatsApp from '@/components/whatsappButton/whatsappButton';
 
 export default function CalculadoraDrywall() {
     const [largura, setLargura] = useState('');
@@ -90,6 +91,7 @@ export default function CalculadoraDrywall() {
                         <p>Parafusos gn25: <strong>{resultado.totalParafusos}</strong></p>
                         <p>Massa (kg): <strong>{resultado.totalMassa}</strong></p>
                         <p>Fita Telada (m): <strong>{resultado.totalFitaTelada}</strong></p>
+                        <WhatsApp/>
                     </div>
                 )}
             </div>

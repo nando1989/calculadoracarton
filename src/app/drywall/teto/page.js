@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import './styles.css';
 import Navbar from '@/components/navbar/Navbar';
+import WhatsApp from '@/components/whatsappButton/whatsappButton';
 
 export default function CalculadoraDrywall() {
     const [largura, setLargura] = useState('');
@@ -90,14 +91,15 @@ export default function CalculadoraDrywall() {
 
                 {resultado && (
                     <div className="resultado">
-                        <p>Quantidade de Placas: <strong>{resultado.totalPlacas}</strong></p>
-                        <p>Quantidade de Cantoneiras: <strong>{resultado.totalCantoneira}</strong></p>
-                        <p>Quantidade de Perfis F530: <strong>{resultado.totalF530}</strong></p>
-                        <p>Quantidade de Reguladores: <strong>{resultado.totalReguladores}</strong></p>
-                        <p>Quantidade de Parafusos: <strong>{resultado.totalParafusos}</strong></p>
-                        <p>Quantidade de Massa (kg): <strong>{resultado.totalMassa}</strong></p>
-                        <p>Quantidade de Fita Telada (m): <strong>{resultado.totalFitaTelada}</strong></p>
+                        <p>Placas: <strong>{resultado.totalPlacas}</strong></p>
+                        <p>Cantoneiras: <strong>{resultado.totalCantoneira}</strong></p>
+                        <p>Perfis F530: <strong>{resultado.totalF530}</strong></p>
+                        <p>Reguladores e tirantes: <strong>{resultado.totalReguladores}</strong></p>
+                        <p>Parafusos: <strong>{resultado.totalParafusos}</strong></p>
+                        <p>Massa (kg): <strong>{resultado.totalMassa}</strong></p>
+                        <p>Fita Telada (m): <strong>{resultado.totalFitaTelada}</strong></p><WhatsApp/>
                     </div>
+                    
                 )}
             </div>
         </>
