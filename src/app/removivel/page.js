@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import './styles.css';
 import Navbar from '@/components/navbar/Navbar';
+import WhatsApp from '@/components/whatsappButton/whatsappButton';
 
 export default function CalculadoraForro() {
     const [largura, setLargura] = useState('');
@@ -79,7 +80,7 @@ export default function CalculadoraForro() {
                 step="0.01"
             />
 
-            <label className="block text-left mt-2">Comprimento do Teto (m):</label>
+            <label >Comprimento do Teto (m):</label>
             <input
                 type="number"
                 value={comprimento}
@@ -99,15 +100,15 @@ export default function CalculadoraForro() {
 
             <button
                 onClick={handleCalcular}
-                className="w-full mt-4 bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
             >Calcular</button>
 
             {resultado && (
-                <div className="mt-4 text-left">
+                <div className="resultado">
                     <p>Quantidade de Placas: <strong>{resultado.totalPlacas}</strong></p>
                     <p>Quantidade de Cantoneiras: <strong>{resultado.totalCantoneira}</strong></p>
                     <p>Quantidade de Longarinas: <strong>{resultado.totalLongarinas}</strong></p>
                     <p>Quantidade de Travessas: <strong>{resultado.totalTravessas}</strong></p>
+                    
                 </div>
             )}
         </div></>

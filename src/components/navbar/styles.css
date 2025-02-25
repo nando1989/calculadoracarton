@@ -85,9 +85,9 @@
   }
   
   .navbar ul {
-    width: 100%;
-    padding-right: 3px;
-    padding-left: 3px;
+    width: 90%;
+    padding-right: 10px;
+    padding-left: 10px;
     list-style: none;
     display: flex;
     gap: 1rem;
@@ -96,12 +96,13 @@
   }
   
   .navbar ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     position: relative;
     transition: color 0.3s ease;
     border-bottom: #c00202;
-    padding-right: 8px;
-    padding-left: 8px;
     font-weight: 700;
   }
   
