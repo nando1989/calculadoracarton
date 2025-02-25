@@ -179,7 +179,7 @@ button:hover {
   /* Estilizando as setas */
   .swiper-button-next,
   .swiper-button-prev {
-    color: rgb(220, 253, 33);
+    color: rgb(238, 157, 7);
     /* Cor das setas */
   }
 
@@ -191,7 +191,7 @@ button:hover {
 
   /* Cor da bolinha ativa */
   .swiper-pagination-bullet-active {
-    background: rgb(2, 2, 2);
+    background: rgb(221, 104, 8);
     /* Cor da bolinha ativa */
   }
 
