@@ -91,7 +91,7 @@ export default function CalculadoraDrywall() {
                         <p>Parafusos gn25: <strong>{resultado.totalParafusos}</strong></p>
                         <p>Massa (kg): <strong>{resultado.totalMassa}</strong></p>
                         <p>Fita Telada (m): <strong>{resultado.totalFitaTelada}</strong></p>
-                        <WhatsApp/>
+                        
                     </div>
                 )}
             </div>
