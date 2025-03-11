@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import './styles.css';
 import Navbar from '@/components/navbar/Navbar';
-import WhatsApp from '@/components/whatsappButton/whatsappButton';
 
 export default function CalculadoraDrywall() {
     const [largura, setLargura] = useState('');
@@ -97,7 +96,7 @@ export default function CalculadoraDrywall() {
                         <p>Reguladores e tirantes: <strong>{resultado.totalReguladores}</strong></p>
                         <p>Parafusos: <strong>{resultado.totalParafusos}</strong></p>
                         <p>Massa (kg): <strong>{resultado.totalMassa}</strong></p>
-                        <p>Fita Telada (m): <strong>{resultado.totalFitaTelada}</strong></p><WhatsApp/>
+                        <p>Fita Telada (m): <strong>{resultado.totalFitaTelada}</strong></p>
                     </div>
                     
                 )}
