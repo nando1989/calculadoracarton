@@ -22,7 +22,7 @@ export default function CalculadoraDrywall() {
 
         const placasLargura = Math.ceil(larguraTeto / placaLadoMenor);
         const placasComprimento = Math.ceil(comprimentoTeto / placaLadoMaior);
-        const totalPlacas = placasLargura * placasComprimento;
+        const totalPlacas = Math.ceil((larguraTeto * comprimentoTeto) / 2.16); 
 
         const totalCantoneira = Math.ceil(((larguraTeto + comprimentoTeto) * 2) / 3.00);
         const totalF530 = Math.ceil((larguraTeto / 0.60) * comprimentoTeto / 3.00);
