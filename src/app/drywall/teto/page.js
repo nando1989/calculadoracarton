@@ -27,7 +27,8 @@ export default function CalculadoraDrywall() {
         const totalCantoneira = Math.ceil(((larguraTeto + comprimentoTeto) * 2) / 3.00);
         const totalF530 = Math.ceil((larguraTeto / 0.60) * comprimentoTeto / 3.00);
         const totalReguladores = totalF530 * 3;
-        const totalParafusos = totalPlacas * 50;
+        const totalParafusosGn = totalPlacas * 33;
+        const totalParafusosMetal = totalF530 * 4;
         const totalMassa = totalPlacas * 1.5;
         const totalFitaTelada = totalPlacas * 5;
 
@@ -36,7 +37,8 @@ export default function CalculadoraDrywall() {
             totalCantoneira,
             totalF530,
             totalReguladores,
-            totalParafusos,
+            totalParafusosGn,
+            totalParafusosMetal,
             totalMassa,
             totalFitaTelada
         };
@@ -94,7 +96,8 @@ export default function CalculadoraDrywall() {
                         <p>Cantoneiras: <strong>{resultado.totalCantoneira}</strong></p>
                         <p>Perfis F530: <strong>{resultado.totalF530}</strong></p>
                         <p>Reguladores e tirantes: <strong>{resultado.totalReguladores}</strong></p>
-                        <p>Parafusos: <strong>{resultado.totalParafusos}</strong></p>
+                        <p>Parafusos Gn25: <strong>{resultado.totalParafusosGn}</strong></p>
+                        <p>Parafusos Metal: <strong>{resultado.totalParafusosMetal}</strong></p>
                         <p>Massa (kg): <strong>{resultado.totalMassa}</strong></p>
                         <p>Fita Telada (m): <strong>{resultado.totalFitaTelada}</strong></p>
                     </div>
