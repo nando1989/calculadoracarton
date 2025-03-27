@@ -22,7 +22,7 @@ export default function CalculadoraDrywall() {
 
         const placasLargura = Math.ceil(larguraParede / placaLadoMenor);
         const placasAltura = Math.ceil(alturaParede / placaLadoMaior);
-        const totalPlacas = placasLargura * placasAltura * 2;
+        const totalPlacas = Math.ceil(placasLargura * placasAltura) * 2;
 
 
         const totalGuias = Math.ceil(((2 * larguraParede) + (2 * alturaParede)) / 3.00);
