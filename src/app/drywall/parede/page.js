@@ -26,7 +26,7 @@ export default function CalculadoraDrywall() {
 
 
         const totalGuias = Math.ceil(((2 * larguraParede) + (2 * alturaParede)) / 3.00);
-        const totalMontantes = Math.ceil((larguraParede / 0.60) + 1);
+        const totalMontantes = Math.ceil(larguraParede / 0.60) * Math.ceil(alturaParede / 3);
         const totalReguladores = totalMontantes * 3;
         const totalParafusos = totalPlacas * 50;
         const totalMassa = totalPlacas * 1.5;
