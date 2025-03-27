@@ -30,7 +30,7 @@ export default function CalculadoraDrywall() {
         const totalMontantes = Math.ceil(larguraParede / 0.60) * Math.ceil(alturaParede / 3);
         const totalReguladores = totalMontantes * 3;
         const totalParafusosGn25 = totalPlacas * 50;
-        const totalParafusosMetal = totalMontantes * 3;
+        const totalParafusosMetal = totalMontantes * 6;
         const totalMassa = totalPlacas * 1.5;
         const totalFitaTelada = totalPlacas * 5;
 
@@ -85,7 +85,6 @@ export default function CalculadoraDrywall() {
                         <button onClick={handleCalcular} className="btn-calcular">Calcular</button>
                     </div>
                 </div>
-totalParafusosMetal
                 {resultado && (
                     <div className="resultado">
                         <p>Placas: <strong>{resultado.totalPlacas}</strong></p>
