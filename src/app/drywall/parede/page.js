@@ -29,7 +29,8 @@ export default function CalculadoraDrywall() {
         const totalGuias = Math.ceil(((2 * larguraParede) + (2 * alturaParede)) / 3.00);
         const totalMontantes = Math.ceil(larguraParede / 0.60) * Math.ceil(alturaParede / 3);
         const totalReguladores = totalMontantes * 3;
-        const totalParafusos = totalPlacas * 50;
+        const totalParafusosGn25 = totalPlacas * 50;
+        const totalParafusosMetal = totalMontantes * 3;
         const totalMassa = totalPlacas * 1.5;
         const totalFitaTelada = totalPlacas * 5;
 
@@ -38,7 +39,8 @@ export default function CalculadoraDrywall() {
             totalGuias,
             totalMontantes,
             totalReguladores,
-            totalParafusos,
+            totalParafusosGn25,
+            totalParafusosMetal,
             totalMassa,
             totalFitaTelada
         };
@@ -83,13 +85,14 @@ export default function CalculadoraDrywall() {
                         <button onClick={handleCalcular} className="btn-calcular">Calcular</button>
                     </div>
                 </div>
-
+totalParafusosMetal
                 {resultado && (
                     <div className="resultado">
                         <p>Placas: <strong>{resultado.totalPlacas}</strong></p>
                         <p>Guias: <strong>{resultado.totalGuias}</strong></p>
                         <p>Montantes: <strong>{resultado.totalMontantes}</strong></p>
-                        <p>Parafusos gn25: <strong>{resultado.totalParafusos}</strong></p>
+                        <p>Parafusos Gn25: <strong>{resultado.totalParafusosGn25}</strong></p>
+                        <p>Parafusos Metal: <strong>{resultado.totalParafusosMetal}</strong></p>
                         <p>Massa (kg): <strong>{resultado.totalMassa}</strong></p>
                         <p>Fita Telada (m): <strong>{resultado.totalFitaTelada}</strong></p>
                         
