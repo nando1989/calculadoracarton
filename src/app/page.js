@@ -40,7 +40,7 @@ const Home = () => {
     { href: "/removivel", image: "/removivel-isopor.png", alt: "Forro removível", title: "Forro Removível" },
   ];
   const items2 = [
-    { href: "/drywall", image: "/drywall.png", alt: "teto drywall", title: "Drywall" },
+    { href: "/drywall", image: "/drywall.png", alt: "teto drywall", title: "Placa de Drywall e Cimentícia" },
   ];
  
 
@@ -71,7 +71,7 @@ const Home = () => {
       </div>
       <div className="containerForm">
         <div className="containerTitleServices">
-          <h3>Escolha o serviço abaixo.</h3>
+          <h3>O que quer medir?</h3>
         </div>
         <div className="griComponent">
           <GridMenu items={items2} />
